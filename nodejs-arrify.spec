@@ -12,7 +12,7 @@
 
 Name:           %{?scl_prefix}nodejs-%{srcname}
 Version:        1.0.0
-Release:        6%{?dist}
+Release:        8%{?dist}
 Summary:        Convert a value to an array
 License:        MIT
 URL:            https://www.npmjs.com/package/%{srcname}
@@ -21,7 +21,7 @@ Source0:        https://github.com/sindresorhus/%{srcname}/archive/%{commit0}.ta
 BuildArch:      noarch
 ExclusiveArch:  %{nodejs_arches} noarch
 
-BuildRequires:  nodejs010-runtime
+BuildRequires:  %{?scl_prefix}runtime
 
 %if 0%{?enable_tests}
 BuildRequires:  %{?scl_prefix}npm(ava)
@@ -59,6 +59,12 @@ node test.js
 %{nodejs_sitelib}/%{srcname}
 
 %changelog
+* Tue Feb 16 2016 Zuzana Svetlikova <zsvetlik@redhat.com> - 1.0.0-8
+- Use macro in -runtime dependency
+
+* Sun Feb 14 2016 Zuzana Svetlikova <zsvetlik@redhat.com> - 1.0.0-7
+- Rebuilt with updated metapackage
+
 * Thu Jan 14 2016 Tomas Hrcka <thrcka@redhat.com> - 1.0.0-6
 - Invoke find_provides_and_requires macro
 
